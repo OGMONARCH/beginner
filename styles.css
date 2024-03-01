@@ -1,0 +1,18 @@
+span{
+    height: 40px;
+}
+
+
+span img{
+    height: 100%;
+    width: 100%;
+}
+
+.mypost{
+    height: auto;
+    width: auto;
+    border: 1px solid rgb(172, 172, 172);
+    padding: 10px 0 0 20px;
+    border-radius: 9px;
+    margin-top: 20px;
+}
