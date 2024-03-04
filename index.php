@@ -17,15 +17,13 @@ $username = 'root';
 $password = '';
 $database = 'king';
 
-// Create connection
 $connection = new mysqli($hostname, $username, $password, $database);
 
-// Check connection
 if ($connection->connect_error) {
     die("Connection Failed: " . $connection->connect_error);
 }
 
-$query  = "SELECT * FROM pblog ORDER BY ID DESC";
+$query  = "SELECT * FROM `pblog` ORDER BY ID DESC";
 $result = $connection->query($query);
 
 $posts = $result->fetch_all(MYSQLI_ASSOC);
@@ -38,12 +36,12 @@ $posts = $result->fetch_all(MYSQLI_ASSOC);
         <?php foreach ($posts as $post): ?>
             <div class="mypost">
                 <p>ID: <?= $post['ID'] ?></p>
-                <p>Time Sent:<?= $post['created_at']?></p>
-                <p>Title:<?=$post['Title'] ?></p>
+                <h3>Title:<?=$post['Title'] ?></h3>
                 <p>Content: <?=$post['Content']?></p>
+                <section><small><?= $post['created_at']?></small></section>
                 <div id="mpt-class">
-                   <button class="btn btn-success">Edit</button>
-                   <span class="btn btn-danger"><img src="./trash.svg" alt=""></span>
+                   <a href="./Update.php?id=<?=$post['ID']?>"><button class="btnz btn btn-success">Edit</button></a>
+                   <a href="./DeletePost.php?id=<?= $post['ID'] ?>"><span class="btn btn-danger"><img src="./trash.svg" alt=""></span></a>
                 </div>
             </div>
         <?php endforeach; ?>
